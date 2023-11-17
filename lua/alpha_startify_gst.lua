@@ -6,7 +6,7 @@ local function git_status_files()
     if not vim.fn.executable("git") then
         return {}
     end
-    local handle = io.popen("git status --untracked-files=all --no-renames --short")
+    local handle = io.popen("git status --untracked-files=all --no-renames --short 2> /dev/null")
     local result = handle:read("*a")
     handle:close()
     return vim.tbl_filter(
